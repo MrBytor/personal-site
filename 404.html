@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Page not found · Jacob Mlynarski</title>
+<style>body{max-width:42rem;margin:4rem auto;padding:0 1.5rem;font:1rem/1.6 system-ui,sans-serif;color:#002e3b}a{color:#b83245}</style></head>
+<body><h1>Page not found</h1><p>This page may have moved. <a href="./index.html">Open the personal website</a>.</p>
+<script type="module">
+  // Preserve old .html bookmarks on static hosts without keeping 75 redirect files.
+  const filename = location.pathname.split('/').pop();
+  try {
+    const response = await fetch(new URL('content/legacy-routes.json', location.href));
+    if (!response.ok) throw new Error('Routes unavailable');
+    const routes = await response.json();
+    if (Object.hasOwn(routes, filename)) {
+      const url = new URL(routes[filename], location.href);
+      for (const [key, value] of new URLSearchParams(location.search)) if (key !== 'page') url.searchParams.set(key, value);
+      if (location.hash) url.hash = location.hash;
+      location.replace(url.href);
+    }
+  } catch { /* Keep the working Home link when offline or the address is unknown. */ }
+</script></body></html>

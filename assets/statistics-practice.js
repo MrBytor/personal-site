@@ -9,7 +9,7 @@ const difficultyLabels = { foundation: 'Foundation', standard: 'Standard', chall
 const styleLabels = { calculation: 'Calculation', interpretation: 'Interpretation', 'error-analysis': 'Find the error', 'mixed-application': 'Mixed application', procedure: 'Choose a method' };
 
 function loadBank() {
-  if (!bankPromise) bankPromise = fetch(new URL('./statistics-question-bank.json?v=20261007-expanded', import.meta.url))
+  if (!bankPromise) bankPromise = fetch(new URL('../content/statistics-question-bank.json?v=20261016', import.meta.url))
     .then((response) => {
       if (!response.ok) throw new Error('Question bank unavailable');
       return response.json();
@@ -189,7 +189,7 @@ export async function mount(container) {
     const title = objective?.label || id;
     const published = /^(\d+)([ABC])\.(\d+)$/.exec(id);
     return published && objective
-      ? `<a class="practice-objective" href="statistics-week-${published[1].padStart(2, '0')}.html#objective-${published[1]}${published[2].toLowerCase()}-${published[3]}" title="${escapeHtml(title)}" aria-label="Objective ${escapeHtml(id)}: ${escapeHtml(title)}">${escapeHtml(id)}</a>`
+      ? `<a class="practice-objective" href="index.html?page=statistics-week-${published[1].padStart(2, '0')}#objective-${published[1]}${published[2].toLowerCase()}-${published[3]}" title="${escapeHtml(title)}" aria-label="Objective ${escapeHtml(id)}: ${escapeHtml(title)}">${escapeHtml(id)}</a>`
       : `<span class="practice-objective" title="${escapeHtml(title)}" aria-label="Objective ${escapeHtml(id)}: ${escapeHtml(title)}">${escapeHtml(id)}</span>`;
   }
 

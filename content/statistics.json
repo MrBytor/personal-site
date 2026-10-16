@@ -24,7 +24,7 @@
         {
           "role": "handout",
           "name": "IFY_Statistics_Week_1_Class_A_Handout.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-01/class-a-handout.pdf",
           "format": "PDF",
           "size": "269 KB"
@@ -32,7 +32,7 @@
         {
           "role": "slides",
           "name": "IFY_Statistics_Week_1_Class_A.pptx",
-          "label": "Class PowerPoint",
+          "label": "PowerPoint",
           "href": "materials/statistics/week-01/IFY_Statistics_Week_1_Class_A.pptx",
           "format": "PPTX",
           "size": "14.6 MB"
@@ -72,7 +72,7 @@
         {
           "role": "handout",
           "name": "IFY_Statistics_Week_1_Class_B_Handout.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-01/class-b-handout.pdf",
           "format": "PDF",
           "size": "271 KB"
@@ -80,7 +80,7 @@
         {
           "role": "slides",
           "name": "IFY_Statistics_Week_1_Class_B.pptx",
-          "label": "Class PowerPoint",
+          "label": "PowerPoint",
           "href": "materials/statistics/week-01/IFY_Statistics_Week_1_Class_B.pptx",
           "format": "PPTX",
           "size": "10.7 MB"
@@ -121,7 +121,7 @@
         {
           "role": "handout",
           "name": "IFY_Statistics_Week_1_Class_C_Handout_Easy.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-01/class-c-handout.pdf",
           "format": "PDF",
           "size": "81 KB"
@@ -137,7 +137,7 @@
         {
           "role": "slides",
           "name": "IFY_Statistics_Week_1_Class_C.pptx",
-          "label": "Class PowerPoint",
+          "label": "PowerPoint",
           "href": "materials/statistics/week-01/IFY_Statistics_Week_1_Class_C.pptx",
           "format": "PPTX",
           "size": "11.2 MB"
@@ -178,14 +178,17 @@
         {
           "role": "handout",
           "name": "IFY-Statistics-Week-2-Class-A-Handout.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-02/class-a-handout.pdf",
           "format": "PDF",
           "size": "268 KB"
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-02/IFY-Statistics-Week-2-Class-A.pptx",
+          "format": "PPTX",
+          "size": "10.8 MB"
         }
       ]
     },
@@ -215,14 +218,17 @@
         {
           "role": "handout",
           "name": "IFY-Statistics-Week-2-Class-B-Handout.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-02/class-b-handout.pdf",
           "format": "PDF",
           "size": "271 KB"
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-02/IFY-Statistics-Week-2-Class-B.pptx",
+          "format": "PPTX",
+          "size": "11.2 MB"
         }
       ]
     },
@@ -251,11 +257,17 @@
       "materials": [
         {
           "role": "handout",
-          "label": "Handout under revision"
+          "label": "Handout",
+          "href": "materials/statistics/week-02/class-c-handout.pdf",
+          "format": "PDF",
+          "size": "293 KB"
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-02/IFY-Statistics-Week-2-Class-C.pptx",
+          "format": "PPTX",
+          "size": "12.2 MB"
         }
       ]
     },
@@ -294,14 +306,17 @@
         {
           "role": "handout",
           "name": "IFY_Statistics_Week_3_Class_A_Handout_Revised.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-03/class-a-handout.pdf",
           "format": "PDF",
           "size": "356 KB"
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-03/IFY-Statistics-Week-3-Class-A.pptx",
+          "format": "PPTX",
+          "size": "13.6 MB"
         }
       ]
     },
@@ -329,14 +344,17 @@
         {
           "role": "handout",
           "name": "IFY_Statistics_Week_3_Class_B_Revised_Handout.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-03/class-b-handout.pdf",
           "format": "PDF",
           "size": "436 KB"
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-03/IFY-Statistics-Week-3-Class-B.pptx",
+          "format": "PPTX",
+          "size": "12.2 MB"
         }
       ]
     },
@@ -364,14 +382,17 @@
         {
           "role": "handout",
           "name": "IFY_Statistics_Week_3_Class_C_Handout_With_Revision.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-03/class-c-handout.pdf",
           "format": "PDF",
           "size": "403 KB"
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-03/IFY-Statistics-Week-3-Class-C.pptx",
+          "format": "PPTX",
+          "size": "10.0 MB"
         }
       ]
     },
@@ -406,7 +427,10 @@
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-04/IFY_Statistics_Week_4_Class_A.pptx",
+          "format": "PPTX",
+          "size": "8.0 MB"
         }
       ]
     },
@@ -443,7 +467,10 @@
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-04/IFY_Statistics_Week_4_Class_B.pptx",
+          "format": "PPTX",
+          "size": "9.7 MB"
         }
       ]
     },
@@ -473,7 +500,7 @@
         {
           "role": "handout",
           "name": "IFY_Statistics_Week_4_Class_C_Handout.pdf",
-          "label": "Class handout",
+          "label": "Handout",
           "href": "materials/statistics/week-04/class-c-handout.pdf",
           "format": "PDF",
           "size": "253 KB"
@@ -488,7 +515,10 @@
         },
         {
           "role": "slides",
-          "label": "PowerPoint upload pending"
+          "label": "PowerPoint",
+          "href": "materials/statistics/week-04/IFY_Statistics_Week_4_Class_C.pptx",
+          "format": "PPTX",
+          "size": "8.4 MB"
         }
       ]
     },
@@ -865,7 +895,7 @@
       "vocabulary": {
         "role": "terms-formulas",
         "name": "Week_1_Vocabulary_2_Pages.pdf",
-        "label": "Terms and Formulas",
+        "label": "Vocabulary & terms",
         "href": "materials/statistics/week-01/Week_1_Vocabulary_2_Pages.pdf",
         "format": "PDF",
         "size": "281 KB"
@@ -876,78 +906,98 @@
       "description": "Start by identifying who and what we want to study. Compare ways to select a sample and recognise bias, then bring these ideas together to investigate a canteen survey and judge what its evidence can support.",
       "vocabulary": {
         "role": "terms-formulas",
-        "label": "Vocabulary PDF upload pending"
-      }
+        "label": "Vocabulary & terms",
+        "href": "materials/statistics/week-02/Week_2_Vocabulary_2_Pages.pdf",
+        "format": "PDF",
+        "size": "269 KB"
+      },
+      "referenceDescription": "Key terms and formulas for the week, with examples. Keep this reference sheet with your class handouts."
     },
     "3": {
       "description": "Describe what is typical in a dataset and how much its values vary. Connect measures of centre, spread and distribution shape, then use them to compare two suppliers and justify a decision.",
       "vocabulary": {
         "role": "terms-formulas",
-        "label": "Vocabulary PDF upload pending"
-      }
+        "label": "Vocabulary & terms",
+        "href": "materials/statistics/week-03/Week_3_Vocabulary_2_Pages.pdf",
+        "format": "PDF",
+        "size": "338 KB"
+      },
+      "referenceDescription": "Key terms and formulas for the week, with examples. Keep this reference sheet with your class handouts."
     },
     "4": {
       "description": "Turn raw data into clear tables and graphs. Develop the calculations behind each display, interpret distributions and relationships, then bring the methods together in a café data workshop using Excel.",
       "vocabulary": {
         "role": "terms-formulas",
-        "label": "Vocabulary PDF upload pending"
-      }
+        "label": "Vocabulary & terms",
+        "href": "materials/statistics/week-04/Week_4_Vocabulary_2_Pages%20(2).pdf",
+        "format": "PDF",
+        "size": "264 KB"
+      },
+      "referenceDescription": "Key terms and formulas for the week, with examples. Keep this reference sheet with your class handouts."
     },
     "5": {
       "description": "Develop the language and rules of probability. Use sets and Venn diagrams to describe events, choose appropriate probability rules, and connect diagrams and trees in multi-step problems.",
       "vocabulary": {
         "role": "terms-formulas",
         "label": "Vocabulary PDF upload pending"
-      }
+      },
+      "referenceDescription": "Shared vocabulary and formulas for Classes A, B and C. The reference file will appear here when available."
     },
     "6": {
       "description": "Explore how one event changes the probability of another. Build probability trees, describe discrete random variables, and apply probability distributions and the binomial model in practical situations.",
       "vocabulary": {
         "role": "terms-formulas",
         "label": "Vocabulary PDF upload pending"
-      }
+      },
+      "referenceDescription": "Shared vocabulary and formulas for Classes A, B and C. The reference file will appear here when available."
     },
     "7": {
       "description": "Connect continuous measurements with probability areas. Move from rectangular density models and cumulative probability to normal distributions, z-scores and percentiles, then apply the models to contextual problems.",
       "vocabulary": {
         "role": "terms-formulas",
         "label": "Vocabulary PDF upload pending"
-      }
+      },
+      "referenceDescription": "Shared vocabulary and formulas for Classes A, B and C. The reference file will appear here when available."
     },
     "8": {
       "description": "Use samples to learn about populations. Explore sampling distributions and standard error, construct confidence intervals, and explain how uncertainty and precision affect an estimate.",
       "vocabulary": {
         "role": "terms-formulas",
         "label": "Vocabulary PDF upload pending"
-      }
+      },
+      "referenceDescription": "Shared vocabulary and formulas for Classes A, B and C. The reference file will appear here when available."
     },
     "9": {
       "description": "Evaluate claims using sample evidence. Form hypotheses, choose a one-sample test, and use significance levels and p-values to reach and communicate a conclusion.",
       "vocabulary": {
         "role": "terms-formulas",
         "label": "Vocabulary PDF upload pending"
-      }
+      },
+      "referenceDescription": "Shared vocabulary and formulas for Classes A, B and C. The reference file will appear here when available."
     },
     "10": {
       "description": "Extend hypothesis testing to comparisons between groups and claims about variation. Distinguish paired from independent data, select suitable tests, and interpret results with their assumptions and limitations.",
       "vocabulary": {
         "role": "terms-formulas",
         "label": "Vocabulary PDF upload pending"
-      }
+      },
+      "referenceDescription": "Shared vocabulary and formulas for Classes A, B and C. The reference file will appear here when available."
     },
     "11": {
       "description": "Explore relationships between numerical variables. Interpret scatter plots and correlation, build and use a regression line, then analyse results in Excel and evaluate the limits of predictions.",
       "vocabulary": {
         "role": "terms-formulas",
         "label": "Vocabulary PDF upload pending"
-      }
+      },
+      "referenceDescription": "Shared vocabulary and formulas for Classes A, B and C. The reference file will appear here when available."
     },
     "12": {
       "description": "Bring the course together through targeted revision and exam-style practice. Review descriptive statistics, probability and inference, then use a mock assessment and feedback to identify the next steps in your preparation.",
       "vocabulary": {
         "role": "terms-formulas",
         "label": "Vocabulary PDF upload pending"
-      }
+      },
+      "referenceDescription": "Shared vocabulary and formulas for Classes A, B and C. The reference file will appear here when available."
     }
   }
 }

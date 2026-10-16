@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { scoreAnswers } from '../assets/statistics-practice-core.mjs';
 
-const bank = JSON.parse(fs.readFileSync(new URL('../assets/statistics-question-bank.json', import.meta.url), 'utf8'));
+const bank = JSON.parse(fs.readFileSync(new URL('../content/statistics-question-bank.json', import.meta.url), 'utf8'));
 
 test('every practice question and answer part has valid objective and concept links', () => {
   const objectives = new Map(bank.objectives.map((item) => [item.id, item]));

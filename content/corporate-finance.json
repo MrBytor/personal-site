@@ -1,0 +1,373 @@
+{
+  "version": 1,
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Introduction to Corporate Finance and Financial Decision Framework",
+      "description": "Explore the purpose of corporate finance, distinguish the four financial decisions and explain how cash flow, time and risk affect company value.",
+      "coverage": [
+        "Purpose and goal of corporate finance",
+        "Four recurring decisions: investment, financing, working capital, and distribution",
+        "Cash flow, time, risk, stakeholders, and company value",
+        "Finance links to HR and management decisions"
+      ],
+      "objectives": [
+        "Define corporate finance and the role of the financial manager.",
+        "Distinguish the four recurring financial decisions.",
+        "Explain why cash flow, time, and risk affect value.",
+        "Identify financial implications of an HR or management decision."
+      ],
+      "meta": [
+        "Class 01",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-1"
+    },
+    {
+      "week": 2,
+      "title": "Financial Statements: Balance Sheet, Income Statement, and Cash Flow Statement",
+      "description": "Read the balance sheet, income statement and cash flow statement, explain how they connect and distinguish accounting profit from cash flow.",
+      "coverage": [
+        "Assets, liabilities, and owners' equity",
+        "Revenue, expenses, profit, and non-cash items",
+        "Operating, investing, and financing cash flows",
+        "Accounting profit versus cash flow"
+      ],
+      "objectives": [
+        "Identify the main components of the three financial statements.",
+        "Explain how the statements connect.",
+        "Distinguish accounting profit from cash generated.",
+        "Use statement information to answer a short managerial question."
+      ],
+      "meta": [
+        "Class 02",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-1"
+    },
+    {
+      "week": 3,
+      "title": "Financial Analysis: Profitability, Liquidity, Efficiency, and Solvency",
+      "description": "Calculate and interpret profitability, liquidity, efficiency and solvency ratios to assess financial performance and identify management priorities.",
+      "coverage": [
+        "Common-size statements and trend comparison",
+        "Profitability and return measures",
+        "Liquidity and efficiency ratios",
+        "Leverage, solvency, and limitations of ratio analysis"
+      ],
+      "objectives": [
+        "Calculate selected financial ratios correctly.",
+        "Interpret what each ratio reveals and does not reveal.",
+        "Compare performance across time or firms using appropriate caution.",
+        "Diagnose a financial strength, weakness, and management priority."
+      ],
+      "meta": [
+        "Class 03",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-1"
+    },
+    {
+      "week": 4,
+      "title": "Time Value of Money: Compounding, Present Value, Future Value, and Annuities",
+      "description": "Use cash-flow timelines, compounding and discounting to calculate present value, future value and annuities.",
+      "coverage": [
+        "Cash-flow timelines",
+        "Compounding and discounting",
+        "Present and future value",
+        "Ordinary annuities and practical applications"
+      ],
+      "objectives": [
+        "Represent a problem using a cash-flow timeline.",
+        "Calculate present and future values.",
+        "Calculate the value of a simple annuity.",
+        "Explain how rate and time change value."
+      ],
+      "meta": [
+        "Class 04",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-2"
+    },
+    {
+      "week": 5,
+      "title": "Risk and Return: Standard Deviation, Beta, CAPM, and Alpha Concept",
+      "description": "Calculate expected return and standard deviation, explain diversification and interpret beta, CAPM required returns and alpha.",
+      "coverage": [
+        "Holding-period and expected return",
+        "Variance, standard deviation, and diversification",
+        "Systematic risk and beta",
+        "CAPM required return and alpha as performance relative to the benchmark"
+      ],
+      "objectives": [
+        "Calculate and interpret expected return and standard deviation.",
+        "Explain diversification and systematic risk.",
+        "Interpret beta and estimate a CAPM required return.",
+        "Distinguish beta from alpha in clear managerial language."
+      ],
+      "meta": [
+        "Class 05",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-2"
+    },
+    {
+      "week": 6,
+      "title": "Investment Decisions: Capital Budgeting and Relevant Cash Flows",
+      "description": "Identify incremental project cash flows, exclude sunk costs and account for opportunity costs, working capital and terminal cash flows.",
+      "coverage": [
+        "Capital budgeting process",
+        "Incremental project cash flows",
+        "Sunk costs, opportunity costs, and side effects",
+        "Working-capital changes and terminal cash flows"
+      ],
+      "objectives": [
+        "Identify relevant and irrelevant project cash flows.",
+        "Exclude sunk costs and include opportunity costs.",
+        "Estimate a simple project cash-flow timeline.",
+        "Explain assumptions and cash-flow risks transparently."
+      ],
+      "meta": [
+        "Class 06",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-2"
+    },
+    {
+      "week": 7,
+      "title": "Investment Evaluation: NPV, IRR, Payback, Sensitivity, and Scenario Analysis",
+      "description": "Evaluate investments using payback, NPV and IRR, then test the recommendation through sensitivity and scenario analysis.",
+      "coverage": [
+        "Payback period",
+        "Net present value",
+        "Internal rate of return",
+        "Sensitivity and scenario testing"
+      ],
+      "objectives": [
+        "Calculate payback, NPV, and IRR for a simple project.",
+        "Explain the strengths and limitations of each method.",
+        "Use NPV as the primary value-creation criterion.",
+        "Stress-test a recommendation using sensitivity or scenarios."
+      ],
+      "meta": [
+        "Class 07",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-2"
+    },
+    {
+      "week": 8,
+      "title": "Sources of Financing: Internal Funds, Debt, Equity, Bonds, Shares, and IPOs",
+      "description": "Compare internal funds, debt and equity, including bonds, shares and IPOs, and weigh their effects on control, flexibility and risk.",
+      "coverage": [
+        "Retained earnings and internal funds",
+        "Bank debt and corporate bonds",
+        "Private and public equity",
+        "Control, flexibility, maturity, and risk trade-offs"
+      ],
+      "objectives": [
+        "Distinguish internal, debt, and equity financing.",
+        "Compare the advantages and disadvantages of major sources.",
+        "Match a financing source to a company's situation.",
+        "Explain how financing affects control and risk."
+      ],
+      "meta": [
+        "Class 08",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-3"
+    },
+    {
+      "week": 9,
+      "title": "Cost of Capital: Cost of Debt, Cost of Equity, CAPM, and WACC",
+      "description": "Estimate the cost of debt and equity, calculate WACC and explain when it is suitable as a discount rate.",
+      "coverage": [
+        "Required return and financing cost",
+        "After-tax cost of debt",
+        "CAPM cost of equity",
+        "Weighted average cost of capital"
+      ],
+      "objectives": [
+        "Estimate after-tax cost of debt.",
+        "Estimate cost of equity using CAPM.",
+        "Calculate WACC using market-value weights.",
+        "Explain when WACC is an appropriate discount rate."
+      ],
+      "meta": [
+        "Class 09",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-3"
+    },
+    {
+      "week": 10,
+      "title": "Capital Structure: Debt, Equity, Leverage, Financial Risk, and Optimal Mix",
+      "description": "Assess debt–equity choices, leverage and financial distress to recommend a capital structure that balances risk and flexibility.",
+      "coverage": [
+        "Operating and financial leverage",
+        "Benefits and costs of debt",
+        "Financial distress and flexibility",
+        "Capital structure as a managerial trade-off"
+      ],
+      "objectives": [
+        "Explain how leverage changes return and risk.",
+        "Identify benefits and costs of debt financing.",
+        "Compare alternative debt-equity mixes.",
+        "Recommend a prudent capital structure using evidence and constraints."
+      ],
+      "meta": [
+        "Class 10",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-3"
+    },
+    {
+      "week": 11,
+      "title": "Working Capital Management and the Cash Conversion Cycle",
+      "description": "Analyse current assets and liabilities, calculate the cash conversion cycle and evaluate ways to improve liquidity.",
+      "coverage": [
+        "Current assets and current liabilities",
+        "Operating cycle and cash cycle",
+        "Inventory, receivables, and payables periods",
+        "Liquidity-profitability trade-off"
+      ],
+      "objectives": [
+        "Define net working capital and its main components.",
+        "Calculate a simple cash conversion cycle.",
+        "Explain why growth can create a cash shortage.",
+        "Recommend one action to improve liquidity without ignoring operational effects."
+      ],
+      "meta": [
+        "Class 11",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-4"
+    },
+    {
+      "week": 12,
+      "title": "Daily Financial Management: Cash, Inventory, Receivables, and EOQ Concept",
+      "description": "Evaluate cash, inventory and receivables decisions, including credit policy and the economic order quantity trade-off.",
+      "coverage": [
+        "Cash balances and short-term planning",
+        "Credit policy and receivables",
+        "Inventory costs and service levels",
+        "Economic order quantity concept"
+      ],
+      "objectives": [
+        "Identify the costs and benefits of holding cash and inventory.",
+        "Evaluate a basic customer credit decision.",
+        "Explain the EOQ trade-off and calculate a simple EOQ where required.",
+        "Design a balanced daily-finance recommendation."
+      ],
+      "meta": [
+        "Class 12",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-4"
+    },
+    {
+      "week": 13,
+      "title": "Profit Distribution: Dividend Policy, Retained Earnings, and Share Repurchases",
+      "description": "Compare retained earnings, dividends and share repurchases, considering investment needs, investor expectations and stakeholder effects.",
+      "coverage": [
+        "Retaining versus distributing profit",
+        "Cash dividends and payout policy",
+        "Share repurchases",
+        "Growth needs, investor expectations, signalling, and fairness"
+      ],
+      "objectives": [
+        "Distinguish retained earnings, dividends, and repurchases.",
+        "Explain how payout choices interact with investment and financing needs.",
+        "Evaluate stakeholder and signalling implications.",
+        "Recommend and justify a distribution policy for a case company."
+      ],
+      "meta": [
+        "Class 13",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-4"
+    },
+    {
+      "week": 14,
+      "title": "Integrated Case Analysis: Investment, Financing, Operations, and Value Creation",
+      "description": "Bring investment, financing and operating decisions together in a company case and defend an evidence-based recommendation.",
+      "coverage": [
+        "Problem diagnosis and decision framing",
+        "Linking cash flow, risk, investment, financing, and liquidity",
+        "Assumption testing and stakeholder effects",
+        "Integrated recommendation"
+      ],
+      "objectives": [
+        "Organise a complex case around the four financial decisions.",
+        "Select relevant tools instead of calculating everything available.",
+        "Identify interactions and trade-offs across decisions.",
+        "Present a concise evidence-based recommendation."
+      ],
+      "meta": [
+        "Class 14",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-5"
+    },
+    {
+      "week": 15,
+      "title": "Corporate Finance Case Presentation and Summary",
+      "description": "Present a financial recommendation, defend assumptions and calculations, and use questions and peer feedback to improve the analysis.",
+      "coverage": [
+        "Group financial-plan presentations",
+        "Question-and-answer defence",
+        "Peer comparison and feedback",
+        "Module 5 quiz and synthesis"
+      ],
+      "objectives": [
+        "Communicate financial evidence clearly and professionally.",
+        "Defend assumptions and calculations under questioning.",
+        "Respond to limitations and alternative interpretations.",
+        "Use peer feedback to improve the final recommendation."
+      ],
+      "meta": [
+        "Class 15",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "module-5"
+    },
+    {
+      "week": 16,
+      "title": "Course Review and Exam Preparation",
+      "description": "Review key concepts and formulas, practise selecting calculation methods and identify personal priorities for exam preparation.",
+      "coverage": [
+        "Concept map across all modules",
+        "Formula and method selection",
+        "Calculation practice",
+        "Common errors and examination strategy"
+      ],
+      "objectives": [
+        "Connect the major concepts across the course.",
+        "Select the correct method for a stated decision problem.",
+        "Complete representative calculations with labelled working.",
+        "Diagnose personal errors and prepare an individual review plan."
+      ],
+      "meta": [
+        "Class 16",
+        "90 minutes",
+        "Business · Human Resource Management"
+      ],
+      "outlineHash": "course-review"
+    }
+  ]
+}

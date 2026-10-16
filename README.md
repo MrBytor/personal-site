@@ -1,46 +1,75 @@
 # Jacob Mlynarski — personal website
 
-This is the independent personal website. Make future personal-site changes in this folder:
+A small personal teaching and research website with four main sections: **Home**, **Courses**, **Publications**, and **About Me**. It uses browser JavaScript, one shared HTML shell, and local content files. No build step, package installation, PHP, database or student account system is required.
 
-`D:\OneDrive\GitHub\personal-site`
+Work on this project in `D:\OneDrive\GitHub\personal-site`. The independent LMS / Bellerby Centre project is at `D:\OneDrive\Eurasia Teaching Content\website`.
 
-The four main sections are **Home**, **Courses**, **Publications**, and **About Me** (including contact details). Course outlines, weekly pages, existing downloads and browser-only practice remain under Courses.
+## Run locally
 
-## Open and switch projects
+Double-click **Start Personal Website.cmd**, or run:
 
-- Double-click `Start Personal Website.cmd` to run the personal site at `http://127.0.0.1:8766/`. Keep its console open while using the site; close it or press Ctrl+C to stop. Python 3 is required and is installed on this computer.
-- In a terminal, run `python scripts/serve.py --no-browser` from this folder if you do not want a browser to open automatically. Refresh the page after editing files.
-- For personal website work, open this folder as your editor/Codex project.
-- LMS and Bellerby Centre work belongs in `D:\OneDrive\Eurasia Teaching Content\website`. Its existing launcher is `Start Teaching Platform.cmd`, and its local server uses port 8765.
+```text
+python scripts/serve.py --no-browser
+```
 
-Copied on 16 October 2026 from the newer static `academic-preview` folder in the LMS workspace. Files and assets are physical copies, with no shared files or automatic syncing. The LMS application, accounts and database were not copied. Career affiliations remain in the professional profile; the site header uses Jacob's personal name.
+Open `http://127.0.0.1:8766/`. Python 3 is only a local preview convenience; published static hosting does not run Python. Keep the server console open while using it. Refresh after editing. The Centre / LMS preview uses its separate port, 8765.
 
-A small static personal teaching website for Jacob Mlynarski, adapted from the purchased WP-Academic 2.4.3 theme.
+## Structure and editing
 
-The theme's supplied CSS and Bootstrap CSS are used with static HTML and a small client navigation script. This is an adaptation of the public layouts rather than a WordPress or Elementor export. WordPress, PHP, Tutor LMS, accounts, checkout and database features are not present.
+- `index.html`: the single shared header, navigation, page container and footer.
+- `assets/app.js`: page loading, navigation, browser history, per-page styles and practice initialization.
+- `assets/site-core.mjs`: route validation, links and navigation helpers.
+- `assets/page-templates.mjs`: reusable Statistics and Finance weekly layouts.
+- `content/pages.json`: content, titles, descriptions and scoped styles for the four main sections, course outlines, practice introduction and four tutorials. Content is trusted HTML markup without repeated headers or footers.
+- `content/statistics.json`: all 40 Statistics classes, coverage, objectives, resource paths and weekly introductions. Edit this data to update a lesson; no HTML generation is needed.
+- `content/corporate-finance.json`: the 16 Finance weeks, descriptions, coverage, objectives and outline anchors.
+- `content/statistics-question-bank.json`: the 649 existing practice questions for Weeks 1–4.
+- `assets/preview.css` and the other scoped stylesheets: the existing visual design.
+- `materials/`: the original course downloads, preserved byte-for-byte.
+- `content/legacy-routes.json`: mappings for all 76 former HTML addresses.
+- `404.html`: a small static-host compatibility helper for old bookmarks; it is not a second page layout.
 
-## Pages
+There are **two HTML files and 40 content views**, rather than 76 HTML files. Statistics uses 12 weekly views combining Classes A/B/C plus four tutorials. Finance uses 16 weekly views. All share the same site shell.
 
-- `index.html`: homepage with links to courses, publications and the professional profile.
-- `statistics.html`: Statistics course details: 12 weeks, 36 A/B/C classes and four Class D tutorials in Weeks 2, 5, 8 and 11; 40 classes of 90 minutes, totalling 60 contact hours.
-- `courses.html`: course selection.
-- `publications.html`: four publications, full abstracts, dated journal metrics and BibTeX.
-- `about-me.html`: professional profile, CV portrait, education, professional qualifications and six appointments.
-- `statistics-practice.html`: 649 questions for Weeks 1–4, with concept, objective and difficulty selection, mixed practice, answer checking, hints, worked solutions and session results.
-- `corporate-finance.html`: Corporate Finance overview, with 16 weekly pages.
-- `project-management.html`: Project Management topics.
+## Links and navigation
 
-All site assets are hosted locally. The header uses the Jacob Mlynarski personal wordmark. Internal navigation replaces the main content while retaining the header, updates the URL and supports browser Back/Forward. Subtle content fades use the Web Animations API with reduced-motion support; the navigation remains interactive throughout. Individual HTML URLs also work when loaded directly or with JavaScript disabled. Use the local server for the interactive practice module.
+Examples:
 
-## Publishing
+```text
+index.html?page=about-me
+index.html?page=statistics
+index.html?page=statistics-week-01#class-a
+index.html?page=statistics-practice&objective=1A.3
+index.html?page=corporate-finance-week-16
+```
 
-The source repository is `https://github.com/MrBytor/personal-site` and is public. Its `origin` remote is independent of the original `GitHub\projects` repository, so changes here do not update that repository or its GitHub Pages website. Uploading source to GitHub does not publish the personal website; use a separate hosting destination when website publication is requested. No build step is required; `index.html` is at the project root.
+Query-based links work on direct visits, refreshes and static hosting under a subdirectory such as `/personal-site/`, without server rewrite rules. Back/Forward, class jump links, expandable publication abstracts and citations remain supported. JavaScript is required for site content. Failed content requests show a retry action instead of an endless reload.
 
-## Editing
+The local preview redirects former `.html` addresses using the route map. GitHub Pages can use `404.html` to send those bookmarks to the matching new view. Unknown addresses show a not-found page. The old HTML files and Python page generators are retained in Git history, not in the working project.
 
-Edit the HTML files for text, `assets/preview.css` for custom layout, and `assets/preview.js` for navigation. No build step is required. Theme assets remain subject to the purchased theme's applicable licence; this repository is not a theme redistribution package.
+## Practice
 
-Local fonts are Karla and Montserrat, distributed under the SIL Open Font License. Their licence files are in `assets/fonts/`.
+The existing Statistics practice runs entirely in the browser, with concept/objective/difficulty selection, mixed practice, numeric and choice marking, hints, worked solutions, fullscreen mode and session results. Session answers remain in memory when navigating within the site and reset on refresh. There is no backend submission or persistent grade database.
+
+Additional subjects can have their own question banks and browser practice modules without creating per-question or per-lesson HTML files. New subject questions are not included in this conversion.
+
+Run checks with Node.js:
+
+```text
+node --test tests/site.test.mjs tests/statistics-practice.test.mjs tests/statistics-question-bank.test.mjs
+```
+
+## GitHub and hosting
+
+The public source repository is `https://github.com/MrBytor/personal-site`. It is independent of `MrBytor/projects`; changes here do not update that repository or the Centre / LMS workspace. Uploading source does not automatically enable website hosting.
+
+The site is compatible with GitHub Pages and other static hosts: publish this folder as-is, with `index.html` at its root and `.nojekyll` preserved. PHP hosting is not required. The source repository is public; this structure does not hide browser code or downloadable materials.
+
+## Theme and font licences
+
+The existing design was adapted from the purchased WP-Academic 2.4.3 theme, using its supplied CSS and Bootstrap. Theme assets remain subject to the purchased theme's applicable licence; this repository is not a theme redistribution package.
+
+Local Karla and Montserrat fonts use the SIL Open Font License. Their licence files remain in `assets/fonts/`.
 
 ## Photo credits
 
@@ -60,20 +89,8 @@ The About Me introduction uses the first person. Contact information follows the
 
 The About Me sidebar presents Email and its address on one row, followed by Phone and its number on a second row. Its portrait retains its original size, and the profile container is slightly wider so the sidebar sits farther left. The labels and values stay aligned in two columns on smaller screens; long email addresses can wrap within the value column.
 
-## Statistics practice
+## Course content status
 
-The 649 questions live in `assets/statistics-question-bank.json`. Practice selects from this local bank rather than generating new numbers. The interface and answer checking are implemented in `assets/statistics-practice.js`, with pure marking and selection helpers in `assets/statistics-practice-core.mjs`. Run the existing automated checks with `node --test tests/statistics-practice.test.mjs tests/statistics-question-bank.test.mjs`.
-
-The shared navigation script initializes practice on direct loads and after client navigation. Session answers remain in memory while navigating within the site; refreshing the page resets the session. No student accounts, external service, AI API or persistent progress database is used. The dormant LMS navigation and practice-event hooks have been removed from this copy. Each question specifies its rounding and method, and worked solutions can be revealed on demand.
-
-## Statistics weekly pages
-
-The course uses 12 weekly pages (`statistics-week-01.html` through `statistics-week-12.html`). Each combines Classes A, B and C using the approved Week 2 layout: overview, class jump links, shared vocabulary, class descriptions and downloads, and grouped objectives numbered by week/class (for example, `7B.1`). Previous/next links move between weekly pages. Class D tutorials remain available in Weeks 2, 5, 8 and 11.
-
-The 36 previous A/B/C page addresses redirect to the matching weekly class section. The shared navigation supports all weekly pages; scoped weekly styles retain the established site design. The course outline links to each class anchor.
-
-Content lives in `assets/statistics-lessons.json`: `lessons` holds class content, and `weeklyOverviews` holds week introductions and shared references. Run `python3 scripts/build-statistics-lessons.py` to regenerate pages; `scripts/statistics_week.py` renders the weekly layout. Weeks 1–4 retain their existing descriptions and objectives. Objectives added for Weeks 5–12 follow the existing course outline; update them alongside the final teaching materials.
-
-All previously available downloads are preserved, including the Week 1 extension handout and Week 4 Excel workbook. The Week 1 vocabulary PDF appears once at the top of its weekly page. Unpublished PowerPoints and vocabulary files remain pending; the Week 2C handout remains under revision and the Week 4A/B handouts retain their earlier-version labels. This layout rollout does not upload additional teaching files.
+Existing pending and under-revision resource labels remain in the content. This conversion changes how pages are rendered; it does not supply unfinished teaching materials. Statistics objectives for Weeks 5–12 should continue to be reviewed alongside final teaching materials.
 
 Project Management course and catalogue photo: [airfocus — project planning](https://unsplash.com/photos/people-collaborating-on-project-plan-v89zhr0iBFY), used under the Unsplash License.

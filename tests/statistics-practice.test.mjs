@@ -1,6 +1,33 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseNumericAnswer, numericMatches, scoreAnswers, recordAttempt, selectQuestions, summariseSession, filterQuestions, setHelpOpen, questionsForObjective } from '../assets/statistics-practice-core.mjs';
+import { parseNumericAnswer, numericMatches, scoreAnswers, recordAttempt, selectQuestions, summariseSession, filterQuestions, setHelpOpen, questionsForObjective, questionsForObjectives } from '../assets/statistics-practice-core.mjs';
+
+test('multiple objectives select a deduplicated union of assessed questions', () => {
+  const questions = [
+    { id: 'shared', primaryObjective: '1A.1', fields: [{ objectiveIds: ['1A.2'] }] },
+    { id: 'first', primaryObjective: '1A.1', fields: [] },
+    { id: 'second', primaryObjective: '1A.2', fields: [] },
+    { id: 'unassessed', primaryObjective: '1A.3', secondaryObjectives: ['1A.1'], fields: [{}] }
+  ];
+  assert.deepEqual(questionsForObjectives(questions, new Set(['1A.1', '1A.2'])).map(q => q.id), ['shared', 'first', 'second']);
+  assert.deepEqual(questionsForObjectives(questions, ['1A.2']).map(q => q.id), ['shared', 'second']);
+  assert.deepEqual(questionsForObjectives(questions, []).map(q => q.id), []);
+  assert.deepEqual(questionsForObjectives(questions, ['unknown']).map(q => q.id), []);
+});
+
+test('objective selections survive narrower filters and session limits without duplicates', () => {
+  const questions = [
+    { id: 'a', week: 1, primaryObjective: '1A.1', fields: [], difficulty: 'foundation' },
+    { id: 'b', week: 1, primaryObjective: '1A.2', fields: [{ objectiveIds: ['1A.1'] }], difficulty: 'standard' },
+    { id: 'c', week: 2, primaryObjective: '2A.1', fields: [], difficulty: 'standard' }
+  ];
+  const objectives = new Set(['1A.1', '1A.2']);
+  const ids = new Set(questionsForObjectives(questions, objectives).map(q => q.id));
+  assert.deepEqual(selectQuestions(questions, ids, { filters: { difficulty: 'standard' } }), ['b']);
+  assert.deepEqual(selectQuestions(questions, ids), ['a', 'b']);
+  assert.deepEqual(selectQuestions(questions, ids, { mode: 'mixed', count: 1, random: () => 0.5 }).length, 1);
+  assert.deepEqual([...objectives], ['1A.1', '1A.2']);
+});
 
 test('objective practice selects only primary or assessed field mappings', () => {
   const questions = [

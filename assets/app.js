@@ -97,7 +97,7 @@ async function mountPractice(token) {
   const container = document.getElementById('statistics-practice');
   if (!container) return;
   try {
-    const module = await import('./statistics-practice.js?v=20261016');
+    const module = await import('./statistics-practice.js?v=20261016-objective-selection');
     if (token === sequence && container.isConnected) await module.mount(container);
   } catch {
     if (token === sequence && container.isConnected) container.innerHTML = '<p role="alert">Practice could not load. Refresh the page to try again.</p>';

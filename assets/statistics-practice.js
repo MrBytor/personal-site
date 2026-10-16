@@ -1,4 +1,4 @@
-import { scoreAnswers, recordAttempt, selectQuestions, summariseSession, filterQuestions, setHelpOpen, questionsForObjective } from './statistics-practice-core.mjs?v=20261009-objectives';
+import { scoreAnswers, recordAttempt, selectQuestions, summariseSession, filterQuestions, setHelpOpen, questionsForObjective, questionsForObjectives } from './statistics-practice-core.mjs?v=20261016-objective-selection';
 
 let bankPromise;
 let state;
@@ -46,16 +46,19 @@ export async function mount(container) {
   const requestedObjective = (bank.objectives || []).find((objective) => objective.id === requestedId);
   const focusedQuestions = questionsForObjective(bank.questions, requestedObjective?.id);
   const focusId = focusedQuestions.length && requestedObjective ? requestedObjective.id : '';
+  const availableObjectives = bank.objectives.filter((objective) => questionsForObjective(bank.questions, objective.id).length);
   if (!state || state.focusId !== focusId) state = { focusId,
-    selectedIds: new Set((focusId ? focusedQuestions : bank.questions).map((question) => question.id)),
+    selectedObjectives: new Set(focusId ? [focusId] : availableObjectives.map((objective) => objective.id)),
     sessionStarted: false, sessionIds: [], mode: 'ordered', count: 'all',
-    index: 0, records: {}, showSummary: false, openWeeks: new Set(focusId ? focusedQuestions.map((q) => q.week) : []), openConcepts: new Set(),
+    index: 0, records: {}, showSummary: false, openWeeks: new Set(focusId ? focusedQuestions.map((q) => q.week) : []),
     filters: { difficulty: 'all', questionStyle: 'all' } };
   const questionsById = new Map(bank.questions.map((question) => [question.id, question]));
   const conceptsById = new Map((bank.concepts || []).map((concept) => [concept.id, concept]));
   const objectivesById = new Map((bank.objectives || []).map((objective) => [objective.id, objective]));
   const conceptLabel = (question) => conceptsById.get(question.conceptId)?.label || question.topic;
-  const conceptKey = (question) => question.conceptId || `${question.week}-${question.topic}`;
+  const objectiveQuestions = new Map(bank.objectives.map((objective) => [objective.id, questionsForObjective(bank.questions, objective.id)]));
+  const weekObjectives = (week) => bank.objectives.filter((objective) => objective.week === week && objectiveQuestions.get(objective.id).length);
+  const selectedQuestionIds = () => new Set(questionsForObjectives(bank.questions, state.selectedObjectives).map((question) => question.id));
   const matchingQuestions = () => filterQuestions(bank.questions, state.filters);
   const currentQuestion = () => questionsById.get(state.sessionIds[state.index]);
   const announce = (message) => { container.querySelector('.practice-status').textContent = message; };
@@ -105,31 +108,25 @@ export async function mount(container) {
     return `<aside id="practice-settings" class="practice-settings" aria-labelledby="practice-settings-title">
       <h2 id="practice-settings-title" tabindex="-1">Choose your practice</h2>
       <form id="practice-settings-form">
-        <p>Choose weeks and concepts, or keep all selected. Set your difficulty and number of questions, then select Start practice.</p>
-        ${focusId ? `<p class="practice-notice">Questions for objective <strong>${escapeHtml(focusId)}</strong> are selected: ${escapeHtml(requestedObjective.label)}. You can change the selection below.</p>` : ''}
-        <div class="practice-select-actions"><button type="button" class="practice-text-button" data-action="select-all">Select matching</button><button type="button" class="practice-text-button" data-action="clear">Clear matching</button></div>
+        <p>Choose learning objectives below. Set your difficulty and number of questions, then select Start practice.</p>
+        ${focusId ? `<p class="practice-notice">Opened for objective <strong>${escapeHtml(focusId)}</strong>: ${escapeHtml(requestedObjective.label)}. You can change the selection below.</p>` : ''}
+        <div class="practice-select-actions"><button type="button" class="practice-text-button" data-action="select-all">Select all objectives</button><button type="button" class="practice-text-button" data-action="clear">Clear objectives</button></div>
         <div class="practice-weeks">${bank.weeks.map((week) => {
-          const questions = matching.filter((question) => question.week === week.id);
-          const selectedCount = questions.filter((question) => state.selectedIds.has(question.id)).length;
-          const groups = new Map();
-          questions.forEach((question) => {
-            const key = conceptKey(question);
-            if (!groups.has(key)) groups.set(key, []);
-            groups.get(key).push(question);
-          });
-          return `<div class="practice-week"><div class="practice-week-heading"><input type="checkbox" id="practice-week-${week.id}" data-week="${week.id}" ${questions.length && selectedCount === questions.length ? 'checked' : ''} ${questions.length ? '' : 'disabled'}><label for="practice-week-${week.id}">Week ${week.id}: ${escapeHtml(week.title)}</label></div>
-            ${questions.length ? `<details data-week-details="${week.id}" ${state.openWeeks.has(week.id) ? 'open' : ''}><summary>${groups.size} concepts · ${questions.length} questions</summary><div class="practice-concept-list">${[...groups].map(([key, items], groupIndex) => {
-              const inputId = `practice-concept-${week.id}-${groupIndex}`;
-              return `<div class="practice-concept"><label class="practice-topic practice-concept-heading" for="${inputId}"><input type="checkbox" id="${inputId}" data-concept-id="${escapeHtml(key)}"><span>${escapeHtml(conceptLabel(items[0]))}<small>${items.length} question${items.length === 1 ? '' : 's'}</small></span></label>
-                <details data-concept-details="${escapeHtml(key)}" ${state.openConcepts.has(key) ? 'open' : ''}><summary>Choose individual questions</summary><div class="practice-topic-list">${items.map((question) => `<label class="practice-topic" for="practice-topic-${escapeHtml(question.id)}"><input type="checkbox" id="practice-topic-${escapeHtml(question.id)}" data-question-id="${escapeHtml(question.id)}" ${state.selectedIds.has(question.id) ? 'checked' : ''}><span>${escapeHtml(question.id)} · ${escapeHtml(question.title)}<small>${escapeHtml(difficultyLabels[question.difficulty] || '')}</small></span></label>`).join('')}</div></details></div>`;
-            }).join('')}</div></details>` : '<p class="practice-empty-filter">No questions match these filters.</p>'}</div>`;
+          const objectives = weekObjectives(week.id);
+          const questions = questionsForObjectives(matching, objectives.map((objective) => objective.id));
+          return `<div class="practice-week"><div class="practice-week-heading"><input type="checkbox" id="practice-week-${week.id}" data-week="${week.id}" ${objectives.length ? '' : 'disabled'}><label for="practice-week-${week.id}">Select all in Week ${week.id}: ${escapeHtml(week.title)}</label></div>
+            ${objectives.length ? `<details data-week-details="${week.id}" ${state.openWeeks.has(week.id) ? 'open' : ''}><summary>${objectives.length} learning objectives · ${questions.length} matching questions</summary><div class="practice-objective-list">${objectives.map((objective) => {
+              const count = questionsForObjective(matching, objective.id).length;
+              const inputId = `practice-objective-${objective.id.replace(/[^a-z0-9-]/gi, '-')}`;
+              return `<label class="practice-topic practice-objective-choice" for="${inputId}"><input type="checkbox" id="${inputId}" data-objective-id="${escapeHtml(objective.id)}" ${state.selectedObjectives.has(objective.id) ? 'checked' : ''}><span><strong>${escapeHtml(objective.id)}</strong> ${escapeHtml(objective.label)}<small>${count} matching question${count === 1 ? '' : 's'}</small></span></label>`;
+            }).join('')}</div></details>` : '<p class="practice-empty-filter">Practice for these objectives is not available yet.</p>'}</div>`;
         }).join('')}</div>
         <label for="practice-difficulty">Difficulty</label>
         <select id="practice-difficulty" aria-describedby="practice-difficulty-help"><option value="all">All levels</option>${Object.entries(difficultyLabels).map(([value, label]) => `<option value="${value}" ${state.filters.difficulty === value ? 'selected' : ''}>${label}</option>`).join('')}</select>
         <p class="practice-filter-help" id="practice-difficulty-help">Foundation: one skill. Standard: apply it. Challenge: combine, choose or explain.</p>
         <label for="practice-style">Question style</label>
         <select id="practice-style"><option value="all">All styles</option>${Object.entries(styleLabels).map(([value, label]) => `<option value="${value}" ${state.filters.questionStyle === value ? 'selected' : ''}>${label}</option>`).join('')}</select>
-        <p class="practice-selection" id="practice-selection-count"></p>
+        <p class="practice-selection" id="practice-selection-count" aria-live="polite"></p>
         <fieldset class="practice-mode-options"><legend>Question order</legend>
           <label for="practice-order-topics"><input type="radio" id="practice-order-topics" name="practice-order" value="ordered" ${state.mode === 'ordered' ? 'checked' : ''}> Question order</label>
           <label for="practice-order-mixed"><input type="radio" id="practice-order-mixed" name="practice-order" value="mixed" ${state.mode === 'mixed' ? 'checked' : ''}> Mixed practice</label>
@@ -145,24 +142,18 @@ export async function mount(container) {
   function updateSelection() {
     const matching = matchingQuestions();
     for (const week of bank.weeks) {
-      const questions = matching.filter((question) => question.week === week.id);
-      const count = questions.filter((question) => state.selectedIds.has(question.id)).length;
+      const objectives = weekObjectives(week.id);
+      const count = objectives.filter((objective) => state.selectedObjectives.has(objective.id)).length;
       const checkbox = container.querySelector(`[data-week="${week.id}"]`);
-      checkbox.checked = questions.length > 0 && count === questions.length;
-      checkbox.indeterminate = count > 0 && count < questions.length;
+      checkbox.checked = objectives.length > 0 && count === objectives.length;
+      checkbox.indeterminate = count > 0 && count < objectives.length;
     }
-    container.querySelectorAll('[data-concept-id]').forEach((checkbox) => {
-      const questions = matching.filter((question) => conceptKey(question) === checkbox.dataset.conceptId);
-      const count = questions.filter((question) => state.selectedIds.has(question.id)).length;
-      checkbox.checked = questions.length > 0 && count === questions.length;
-      checkbox.indeterminate = count > 0 && count < questions.length;
+    container.querySelectorAll('[data-objective-id]').forEach((checkbox) => {
+      checkbox.checked = state.selectedObjectives.has(checkbox.dataset.objectiveId);
     });
-    container.querySelectorAll('[data-question-id]').forEach((checkbox) => {
-      checkbox.checked = state.selectedIds.has(checkbox.dataset.questionId);
-    });
-    const count = matching.filter((question) => state.selectedIds.has(question.id)).length;
+    const count = questionsForObjectives(matching, state.selectedObjectives).length;
     const limit = state.count === 'all' ? count : Math.min(count, Number(state.count));
-    container.querySelector('#practice-selection-count').textContent = `${count} matching question${count === 1 ? '' : 's'} selected · ${limit} question${limit === 1 ? '' : 's'} in your ${state.sessionStarted ? 'next ' : ''}practice. Changes apply when you start.`;
+    container.querySelector('#practice-selection-count').textContent = `${state.selectedObjectives.size} objective${state.selectedObjectives.size === 1 ? '' : 's'} selected · ${count} matching question${count === 1 ? '' : 's'} · ${limit} question${limit === 1 ? '' : 's'} in your ${state.sessionStarted ? 'next ' : ''}practice. Changes apply when you start.`;
     container.querySelector('#practice-settings-error').textContent = '';
   }
 
@@ -213,7 +204,7 @@ export async function mount(container) {
       feedback = `<p class="practice-feedback ${record.feedback.correct ? 'is-correct' : 'is-incorrect'}" role="status">${message}</p>`;
     }
     return `<div class="practice-progress"><span>Question ${state.index + 1} of ${state.sessionIds.length}</span><span> · ${summary.attempted} checked · ${summary.eventuallyCorrect} correct</span></div>
-      <p class="practice-select-actions"><a href="#practice-settings">Choose weeks, concepts and difficulty</a></p>
+      <p class="practice-select-actions"><a href="#practice-settings">Choose objectives and difficulty</a></p>
       <div class="practice-question-select"><label for="practice-jump">Go to a question</label><select id="practice-jump">${state.sessionIds.map((id, index) => {
         const item = questionsById.get(id);
         return `<option value="${index}" ${index === state.index ? 'selected' : ''}>${escapeHtml(item.id)} · ${escapeHtml(item.title)}${state.records[id]?.solved ? ' ✓' : ''}</option>`;
@@ -261,7 +252,7 @@ export async function mount(container) {
       </figure>
       <ol class="practice-preparation-steps">
         <li><div><h3>Prepare your calculator, paper and pen</h3><p>Write out your calculations on paper, then enter your answers here.</p></div></li>
-        <li><div><h3>Choose the concepts you want to cover</h3><p>Select your weeks and concepts, or leave all selected to cover them all.</p></div></li>
+        <li><div><h3>Choose the learning objectives you want to cover</h3><p>Select learning objectives grouped by week, or leave all selected. Suitable questions are chosen automatically.</p></div></li>
         <li><div><h3>Choose your difficulty and number of questions</h3><p>Choose Foundation, Standard, Challenge or All levels. When you are ready, select <strong>Start practice</strong>.</p></div></li>
       </ol>
       <button type="button" class="btn btn-primary" data-action="choose-practice">Choose my practice</button>
@@ -311,17 +302,12 @@ export async function mount(container) {
   container.addEventListener('change', (event) => {
     const target = event.target;
     if (target.matches('[data-week]')) {
-      matchingQuestions().filter((question) => question.week === Number(target.dataset.week)).forEach((question) => {
-        if (target.checked) state.selectedIds.add(question.id); else state.selectedIds.delete(question.id);
+      weekObjectives(Number(target.dataset.week)).forEach((objective) => {
+        if (target.checked) state.selectedObjectives.add(objective.id); else state.selectedObjectives.delete(objective.id);
       });
       updateSelection();
-    } else if (target.matches('[data-concept-id]')) {
-      matchingQuestions().filter((question) => conceptKey(question) === target.dataset.conceptId).forEach((question) => {
-        if (target.checked) state.selectedIds.add(question.id); else state.selectedIds.delete(question.id);
-      });
-      updateSelection();
-    } else if (target.matches('[data-question-id]')) {
-      if (target.checked) state.selectedIds.add(target.dataset.questionId); else state.selectedIds.delete(target.dataset.questionId);
+    } else if (target.matches('[data-objective-id]')) {
+      if (target.checked) state.selectedObjectives.add(target.dataset.objectiveId); else state.selectedObjectives.delete(target.dataset.objectiveId);
       updateSelection();
     } else if (target.id === 'practice-difficulty' || target.id === 'practice-style') {
       state.filters[target.id === 'practice-difficulty' ? 'difficulty' : 'questionStyle'] = target.value;
@@ -355,9 +341,9 @@ export async function mount(container) {
   container.addEventListener('submit', (event) => {
     if (event.target.id === 'practice-settings-form') {
       event.preventDefault();
-      const ids = selectQuestions(bank.questions, state.selectedIds, state);
+      const ids = selectQuestions(bank.questions, selectedQuestionIds(), state);
       if (!ids.length) {
-        container.querySelector('#practice-settings-error').textContent = 'Choose at least one matching question, or change the difficulty or style.';
+        container.querySelector('#practice-settings-error').textContent = 'Choose at least one learning objective with matching questions, or change the difficulty or style.';
         return;
       }
       startSession(ids);
@@ -402,9 +388,7 @@ export async function mount(container) {
     } else if (button.dataset.jump !== undefined) {
       state.index = Number(button.dataset.jump); state.showSummary = false; renderWorkspace({ focus: true });
     } else if (action === 'select-all' || action === 'clear') {
-      matchingQuestions().forEach((question) => {
-        if (action === 'select-all') state.selectedIds.add(question.id); else state.selectedIds.delete(question.id);
-      });
+      state.selectedObjectives = new Set(action === 'select-all' ? availableObjectives.map((objective) => objective.id) : []);
       updateSelection();
     } else if (action === 'hint') {
       const id = currentQuestion().id;
@@ -431,9 +415,6 @@ export async function mount(container) {
     if (details.matches('[data-week-details]')) {
       const week = Number(details.dataset.weekDetails);
       if (details.open) state.openWeeks.add(week); else state.openWeeks.delete(week);
-    } else if (details.matches('[data-concept-details]')) {
-      const concept = details.dataset.conceptDetails;
-      if (details.open) state.openConcepts.add(concept); else state.openConcepts.delete(concept);
     } else if (details.matches('[data-solution], [data-extension-model]')) {
       const id = details.dataset.helpQuestion;
       state.records[id] = setHelpOpen(recordFor(id), details.matches('[data-solution]') ? 'solution' : 'extension', details.open);

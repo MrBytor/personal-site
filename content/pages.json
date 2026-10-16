@@ -60,7 +60,7 @@
     },
     "statistics-practice": {
       "title": "Practice for Exam · Jacob Mlynarski",
-      "description": "Practise foundation Statistics with concept and difficulty filters, answer checking, hints and worked solutions. 649 questions for Weeks 1–4.",
+      "description": "Practise foundation Statistics with learning objective and difficulty selection, answer checking, hints and worked solutions. 649 questions for Weeks 1–4.",
       "bodyClass": "",
       "content": "<section class=\"subpage-banner practice-banner\"><div class=\"container\"><p class=\"breadcrumbs\"><a href=\"index.html\">Home</a> / <a href=\"index.html?page=statistics\">Statistics</a> / Practice for Exam</p><h1>Practice for Exam</h1><p class=\"subpage-intro\">Build confidence, one question at a time.</p></div></section>\n  <section class=\"practice-section\"><div class=\"container\"><div class=\"practice-intro\"><p>Weeks 1–4 · 649 questions with hints and worked solutions</p><a href=\"index.html?page=statistics\">Back to the course</a></div><div id=\"statistics-practice\" class=\"practice-app\"><p role=\"status\">Loading practice questions…</p></div><noscript><p class=\"practice-card\">Please enable JavaScript to answer and check practice questions.</p></noscript></div></section>",
       "styles": []

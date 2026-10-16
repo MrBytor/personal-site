@@ -44,11 +44,17 @@ export function recordAttempt(record, result) {
     firstAttempt: record.firstAttempt || (result.valid ? { correct: result.correct, assisted: Boolean(record.usedHelp) } : null) };
 }
 
-// Filters narrow the next session without erasing a student's individual choices.
+// Only primary objectives and objectives assessed by an answer field select questions.
 export function questionsForObjective(questions, objectiveId) {
   if (!objectiveId) return questions;
   return questions.filter((question) => question.primaryObjective === objectiveId ||
     question.fields.some((field) => field.objectiveIds?.includes(objectiveId)));
+}
+
+export function questionsForObjectives(questions, objectiveIds) {
+  const selected = objectiveIds instanceof Set ? objectiveIds : new Set(objectiveIds);
+  return questions.filter((question) => selected.has(question.primaryObjective) ||
+    question.fields.some((field) => field.objectiveIds?.some((id) => selected.has(id))));
 }
 
 export function filterQuestions(questions, { week = 'all', conceptId = 'all', difficulty = 'all', questionStyle = 'all' } = {}) {

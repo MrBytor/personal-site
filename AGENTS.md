@@ -13,5 +13,6 @@ This folder is Jacob Mlynarski's independent static personal website. Apply pers
 - Navigation is in `assets/app.js` and `assets/site-core.mjs`; reusable weekly layouts are in `assets/page-templates.mjs`. Shared design remains in `assets/preview.css` and the scoped subject/profile stylesheets.
 - Use query routes such as `index.html?page=statistics-week-01#class-a`. Preserve objective filters and anchor IDs. `content/legacy-routes.json` maps old bookmarks; the local preview server and static-host 404 helper use it.
 - Existing quizzes run in the browser. Keep student accounts, grades and backend connections outside this project unless explicitly requested. No CMS, framework installation or PHP is required.
+- Practice setup selects learning objectives grouped by week, with week-wide select-all. Do not reintroduce individual-question checkboxes. Match primary objectives or assessed answer-field objectives, deduplicate questions, and retain objective selections when difficulty/style filters change.
 - Run `node --test tests/site.test.mjs tests/statistics-practice.test.mjs tests/statistics-question-bank.test.mjs` after functional changes. Verify navigation, direct/reloaded routes, mobile menu, old links, downloads and practice in a browser when applicable.
 - Preserve font licences and image/theme attribution in README.md.

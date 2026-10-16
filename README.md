@@ -49,7 +49,7 @@ The local preview redirects former `.html` addresses using the route map. GitHub
 
 ## Practice
 
-The existing Statistics practice runs entirely in the browser, with concept/objective/difficulty selection, mixed practice, numeric and choice marking, hints, worked solutions, fullscreen mode and session results. Session answers remain in memory when navigating within the site and reset on refresh. There is no backend submission or persistent grade database.
+The existing Statistics practice runs entirely in the browser, with learning objectives grouped by week, week-wide select-all, difficulty and style filters, mixed practice, numeric and choice marking, hints, worked solutions, fullscreen mode and session results. Session answers remain in memory when navigating within the site and reset on refresh. There is no backend submission or persistent grade database. Students select learning objectives rather than individual questions; the site automatically chooses a deduplicated set of questions that assess the selected objectives. Changing filters preserves the selected objectives.
 
 Additional subjects can have their own question banks and browser practice modules without creating per-question or per-lesson HTML files. New subject questions are not included in this conversion.
 

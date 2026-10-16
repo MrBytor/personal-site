@@ -34,7 +34,7 @@ All site assets are hosted locally. The header uses the Jacob Mlynarski personal
 
 ## Publishing
 
-The source repository is `https://github.com/MrBytor/personal-site` and is private. Its `origin` remote is independent of the original `GitHub\projects` repository, so changes here do not update that repository or its GitHub Pages website. Uploading source to GitHub does not publish the personal website; use a separate hosting destination when website publication is requested. No build step is required; `index.html` is at the project root.
+The source repository is `https://github.com/MrBytor/personal-site` and is public. Its `origin` remote is independent of the original `GitHub\projects` repository, so changes here do not update that repository or its GitHub Pages website. Uploading source to GitHub does not publish the personal website; use a separate hosting destination when website publication is requested. No build step is required; `index.html` is at the project root.
 
 ## Editing
 

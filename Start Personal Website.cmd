@@ -1,0 +1,11 @@
+@echo off
+setlocal
+title Jacob Mlynarski - Personal Website
+cd /d "%~dp0"
+where py >nul 2>nul
+if %errorlevel% equ 0 (
+    py -3 scripts\serve.py
+) else (
+    python scripts\serve.py
+)
+if errorlevel 1 pause

@@ -1,0 +1,50 @@
+.about-page .profile-banner{position:relative;padding:92px 0 100px;background:var(--ink) url('library.jpg') center 54%/cover no-repeat;color:#fff}
+.about-page .profile-banner::before{content:"";position:absolute;inset:0;background:rgba(0,23,30,.76)}
+.about-page .profile-banner .container{position:relative}
+.about-page .profile-banner h1{font-size:clamp(2rem,4vw,2.5rem);font-weight:500;margin:0 0 18px}
+.about-page .profile-banner .breadcrumbs{margin:0;color:#fff;font-size:1rem;display:flex;align-items:center;gap:14px}
+.about-page .profile-banner .breadcrumbs a{color:#fff}
+.about-page .profile-banner .breadcrumb-separator{font-size:.875rem;color:#d4e3e7}
+.about-page .professor-section{padding:70px 0 85px}
+.about-page .professor-section>.container{width:100%;max-width:1220px}
+.about-page .professor-layout{display:grid;grid-template-columns:360px minmax(0,1fr);gap:44px;align-items:start}
+.about-page .professor-aside{position:relative;margin-top:-140px;min-width:0}
+.about-page .profile-portrait{background:#fff;border:8px solid #fff;box-shadow:0 2px 12px rgba(0,46,59,.08);margin:0 0 26px;max-width:260px}
+.about-page .profile-portrait img{display:block;width:100%;height:auto}
+.about-page .professor-aside h2{font-size:1.125rem;font-weight:600;color:#639c6d;margin:24px 0 13px}
+.about-page .professor-aside p{font-size:1rem;line-height:1.7;margin-bottom:16px}
+.about-page .professor-aside .profile-name{font-family:Montserrat,Arial,sans-serif;font-size:1.25rem;font-weight:600;margin:0 0 7px;color:var(--ink)}
+.about-page .professor-aside .profile-role{font-size:1rem;color:var(--muted);margin:0}
+.about-page .profile-contact{display:grid;grid-template-columns:minmax(0,1fr);gap:0;list-style:none;padding:0;margin:0}
+.about-page .profile-contact li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:10px;align-items:baseline;margin:0 0 10px;min-width:0}
+.about-page .profile-contact span{display:block;font-size:.8125rem;font-weight:600;color:var(--muted);margin-bottom:0}
+.about-page .profile-contact a{font-size:.875rem;color:var(--ink);overflow-wrap:anywhere}
+.about-page .profile-contact li:last-child a{white-space:nowrap}
+.about-page .profile-contact a:hover{color:var(--accent)}
+.about-page .profile-social{display:flex;flex-direction:column;gap:12px;padding-top:8px}
+.about-page .profile-social a{display:flex;align-items:center;gap:12px;color:var(--ink);font-size:.9375rem;font-weight:600;width:fit-content}
+.about-page .profile-social a:hover{color:var(--accent)}
+.about-page .profile-social img{display:block;object-fit:contain;flex-shrink:0}
+.about-page .professor-copy{min-width:0;padding-bottom:5px}
+.about-page .professor-copy .professor-position{font-family:Montserrat,Arial,sans-serif;color:#639c6d;font-size:1.2rem;font-weight:500;line-height:1.5;margin:0 0 24px}
+.about-page .professor-copy p{font-size:1rem;line-height:1.75;margin-bottom:20px}
+.about-page .professor-copy p:last-child{margin-bottom:0}
+.about-page .professor-copy h2{font-size:1.5rem;font-weight:600;margin:40px 0 28px;color:var(--ink)}
+.about-page .profile-credentials h2{color:#000}
+.about-page .profile-research-label{font-style:italic;font-weight:600}
+.about-page .academic-timeline{list-style:none;padding:0;margin:0;position:relative}
+.about-page .academic-timeline::before{content:"";position:absolute;top:11px;bottom:23px;left:130px;width:4px;background:#eef2f4}
+.about-page .academic-timeline li{display:grid;grid-template-columns:104px minmax(0,1fr);gap:46px;position:relative;padding:9px 0 20px;margin:0;min-width:0}
+.about-page .academic-timeline li::before{content:"";position:absolute;width:14px;height:14px;background:#000;border:2px solid #fff;border-radius:50%;left:125px;top:15px}
+.about-page .academic-timeline .qualification-year{font-size:1rem;font-weight:600;text-align:center;color:#000;line-height:1.5;padding-top:0}
+.about-page .academic-timeline h3{font-family:Montserrat,Arial,sans-serif;font-size:1.0625rem;font-weight:600;line-height:1.5;margin:0 0 8px;color:#000}
+.about-page .academic-timeline p{margin:0;color:#000}
+.about-page .appointments{display:flex;flex-direction:column;gap:18px}
+.about-page .appointment{display:grid;grid-template-columns:130px minmax(0,1fr);gap:27px;padding:22px 30px;border:1px solid #e5e5e5;background:#f9f9f9;border-radius:40px;align-items:center}
+.about-page .appointment .appointment-period{font-size:1rem;font-weight:500;margin:0;line-height:1.5;padding-right:22px;border-right:1px solid #e0e5e8}
+.about-page .appointment-period time{white-space:nowrap}
+.about-page .appointment h3{font-size:1.0625rem;font-weight:600;line-height:1.45;margin:0 0 7px}
+.about-page .appointment p{font-size:.9375rem;color:var(--muted);line-height:1.65;margin:0}
+.about-page .appointment .appointment-institution{font-weight:600;color:var(--ink);margin-bottom:7px}
+@media(max-width:1000px){.about-page .professor-layout{grid-template-columns:320px minmax(0,1fr);gap:32px}.about-page .appointment{grid-template-columns:105px minmax(0,1fr);padding:20px 24px;gap:20px}.about-page .academic-timeline li{grid-template-columns:72px minmax(0,1fr);gap:34px}.about-page .academic-timeline::before{left:88px}.about-page .academic-timeline li::before{left:83px}.about-page .appointment .appointment-period{padding-right:15px}}
+@media(max-width:900px){.about-page .profile-banner{padding:48px 0 50px}.about-page .professor-section{padding:36px 0 55px}.about-page .professor-layout{grid-template-columns:minmax(0,1fr);gap:32px}.about-page .professor-aside{margin-top:0;display:grid;grid-template-columns:112px minmax(0,1fr);gap:0 22px}.about-page .profile-portrait{grid-row:1/3;border-width:5px;margin:0;align-self:start}.about-page .professor-aside .profile-name{font-size:1.15rem;align-self:end;margin-top:5px}.about-page .professor-aside .profile-role{align-self:start}.about-page .professor-aside .profile-aside-section{grid-column:1/-1}.about-page .professor-aside h2{margin-top:23px}.about-page .professor-aside p{margin-bottom:0}.about-page .profile-contact{gap:0}.about-page .professor-copy{padding-top:28px;border-top:1px solid var(--line)}.about-page .appointment{grid-template-columns:minmax(0,1fr);gap:9px;border-radius:5px;padding:20px}.about-page .appointment .appointment-period{border-right:0;border-bottom:1px solid #e0e5e8;padding:0 0 12px}.about-page .professor-copy h2{font-size:1.35rem;margin-top:32px}.about-page .academic-timeline li{grid-template-columns:56px minmax(0,1fr);gap:28px}.about-page .academic-timeline::before{left:66px}.about-page .academic-timeline li::before{left:61px}.about-page .academic-timeline .qualification-year{font-size:.9375rem}.about-page .academic-timeline h3{font-size:1rem}}
